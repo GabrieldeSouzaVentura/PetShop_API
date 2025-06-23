@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 374,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,19 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "PetShop\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "PetShop\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T18:06:31.722Z",
-              "EditorCaption": ""
             }
           ]
         }
