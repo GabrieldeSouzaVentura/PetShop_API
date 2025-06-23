@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PetShop.Models;
 
@@ -15,10 +16,10 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<UserRole>().HasData
+        modelBuilder.Entity<IdentityRole>().HasData
         (
-            new UserRole { Id = 1, Description = "Admin" },
-            new UserRole { Id = 2, Description = "User" }
+            new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
+            new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
         );
     }
 }
