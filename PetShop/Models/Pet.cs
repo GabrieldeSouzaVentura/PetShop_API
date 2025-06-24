@@ -8,7 +8,7 @@ public class Pet
     public string Name { get; set; }
     public int Age { get; set; }
     public string Type { get; set; }
-    public string Brees { get; set; }
+    public string Breed { get; set; }
     public int TutorId { get; set; }
     [JsonIgnore]
     public Tutor Tutor { get; set; }
