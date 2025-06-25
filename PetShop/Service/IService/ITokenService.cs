@@ -9,5 +9,5 @@ public interface ITokenService
 
     string GenerateRefreshToken();
 
-    ClaimsPrincipal GetClaimPricipalFromExpiredToken(string token, IConfiguration _configuration);
+    ClaimsPrincipal GetPrincipalFromExpiredToken(string token, IConfiguration _configuration);
 }

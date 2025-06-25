@@ -2,6 +2,6 @@
 
 public class ResponseDto
 {
-    public string Staus { get; set; }
-    public string Massage { get; set; }
+    public string Status { get; set; }
+    public string Message { get; set; }
 }
