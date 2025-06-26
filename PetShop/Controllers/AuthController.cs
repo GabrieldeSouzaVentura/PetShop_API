@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using PetShop.DTOs.JwtDtos;
 using PetShop.Filters;
 using PetShop.Models;
+using PetShop.Service;
 using PetShop.Service.IService;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -15,15 +16,13 @@ namespace PetShop.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly ITokenService _tokenService;
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly UserServices _userServices;
     private readonly IConfiguration _configuration;
 
-    public AuthController(ITokenService tokenService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+    public AuthController(ITokenService tokenService, IConfiguration configuration, UserServices userServices)
     {
+        _userServices = userServices;
         _tokenService = tokenService;
-        _userManager = userManager;
-        _roleManager = roleManager;
         _configuration = configuration;
     }
 
@@ -32,8 +31,8 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
     {
-        var userExists = await _userManager.FindByNameAsync(registerDto.UserName!);
-        var emailExists = await _userManager.FindByEmailAsync(registerDto.Email);
+        var userExists = await _userServices.UserExistAsync(registerDto.UserName);
+        var emailExists = await _userServices.UserExistAsync(registerDto.Email);
 
         if (userExists != null || emailExists != null)
         {
@@ -46,7 +45,7 @@ public class AuthController : ControllerBase
             SecurityStamp = Guid.NewGuid().ToString(),
             UserName = registerDto?.UserName
         };
-        var result = await _userManager.CreateAsync(user, registerDto.Password);
+        var result = await _userServices.CreateUserAsync(user, registerDto.Password);
 
         if (!result.Succeeded)
         {

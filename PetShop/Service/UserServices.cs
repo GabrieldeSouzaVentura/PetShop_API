@@ -6,9 +6,9 @@ namespace PetShop.Service;
 public class UserServices
 {
     private readonly UserManager<IdentityUser> _userManager;
-    private readonly RoleManager<IdentityUser> _roleManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public UserServices(UserManager<IdentityUser> userManager, RoleManager<IdentityUser> roleManager)
+    public UserServices(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -24,5 +24,12 @@ public class UserServices
         return await _userManager.CreateAsync(user, password);
     }
 
-    public async Task
+    public async Task AddRoleAsync(ApplicationUser user, string role)
+    {
+        var roleExists = await _roleManager.RoleExistsAsync(role);
+        if (!roleExists) 
+            await _roleManager.CreateAsync(new IdentityRole(role));
+
+        await _userManager.AddToRoleAsync(user, role);
+    }
 }

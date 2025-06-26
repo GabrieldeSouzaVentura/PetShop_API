@@ -3,30 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\service\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\service\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\petshop.tests\\authcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\petshop.tests\\authcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\service\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\service\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\extensions\\apeexceptionmiddlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\extensions\\apeexceptionmiddlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshop\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81824394-493C-44EE-AC25-09D8493B2FAD}|PetShop\\PetShop.csproj|solutionrelative:petshop\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 374,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,54 +46,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserServices.cs",
-              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Service\\UserServices.cs",
-              "RelativeDocumentMoniker": "PetShop\\Service\\UserServices.cs",
-              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Service\\UserServices.cs",
-              "RelativeToolTip": "PetShop\\Service\\UserServices.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBoAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Program.cs",
+              "RelativeDocumentMoniker": "PetShop\\Program.cs",
+              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Program.cs",
+              "RelativeToolTip": "PetShop\\Program.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T15:59:08.304Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Repositories\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "PetShop\\Repositories\\UnitOfWork.cs",
-              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Repositories\\UnitOfWork.cs",
-              "RelativeToolTip": "PetShop\\Repositories\\UnitOfWork.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T15:55:54.502Z",
+              "WhenOpened": "2025-06-26T20:06:45.265Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AuthControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.Tests\\AuthControllerTest.cs",
-              "RelativeDocumentMoniker": "PetShop\\PetShop.Tests\\AuthControllerTest.cs",
-              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.Tests\\AuthControllerTest.cs",
-              "RelativeToolTip": "PetShop\\PetShop.Tests\\AuthControllerTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Title": "ApeExceptionMiddlewareExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Extensions\\ApeExceptionMiddlewareExtensions.cs",
+              "RelativeDocumentMoniker": "PetShop\\Extensions\\ApeExceptionMiddlewareExtensions.cs",
+              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Extensions\\ApeExceptionMiddlewareExtensions.cs",
+              "RelativeToolTip": "PetShop\\Extensions\\ApeExceptionMiddlewareExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T15:30:58.854Z",
+              "WhenOpened": "2025-06-26T20:03:47.539Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "PetShop\\Context\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "PetShop\\Context\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T20:03:40.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Service\\UserServices.cs",
+              "RelativeDocumentMoniker": "PetShop\\Service\\UserServices.cs",
+              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Service\\UserServices.cs",
+              "RelativeToolTip": "PetShop\\Service\\UserServices.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T19:52:11.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "PetShop\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\Controllers\\AuthController.cs",
               "RelativeToolTip": "PetShop\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAawBMAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowEAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T08:49:38.226Z",
+              "WhenOpened": "2025-06-26T19:44:23.689Z",
               "EditorCaption": ""
             }
           ]
