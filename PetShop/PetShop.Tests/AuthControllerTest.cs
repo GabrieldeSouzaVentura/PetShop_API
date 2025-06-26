@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Moq;
-using Xunit;
+﻿using Moq;
+using PetShop.Models;
 
 namespace PetShop.PetShop.Tests;
 
 public class AuthControllerTest
 {
-    [Fact]
-    public void RegisterTeste()
+    public void TestRegister()
     {
-        var mokService = new Mock<IActionResult>();
-        var userCreate = new 
+        var mockRepository = new Mock<ApplicationUser>();
+        var services = new Auth(mockRepository.Object);
     }
 }
