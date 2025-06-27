@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace PetShop.Controllers;
 
-[Route("Api/Controller")]
+[Route("Api/[controller]")]
 [ApiController]
 public class AuthController : ControllerBase
 {
@@ -31,8 +31,8 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
     {
-        var userExists = await _userServices.UserExistAsync(registerDto.UserName);
-        var emailExists = await _userServices.UserExistAsync(registerDto.Email);
+        var userExists = await _userServices.FindByNameAsync(registerDto.UserName);
+        var emailExists = await _userServices.FindByEmailAsync(registerDto.Email);
 
         if (userExists != null || emailExists != null)
         {
@@ -60,11 +60,12 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
-        var user = await _userManager.FindByNameAsync(loginDto.UserName!);
+        var user = await _userServices.FindByNameAsync(loginDto.UserName!);
+        var password = await _userServices.CheckPasswordAsync(user, loginDto.Password!);
 
-        if (user is not null && await _userManager.CheckPasswordAsync(user, loginDto.Password!))
+        if (user != null && password != null)
         {
-            var userRoles = await _userManager.GetRolesAsync(user);
+            var userRoles = await _userServices.GetRolesAsync(user);
 
             var authClaims = new List<Claim>
             {
@@ -87,7 +88,7 @@ public class AuthController : ControllerBase
             user.RefrshToken = refreshToken;
             user.RefrshTokenExpiryTime = DateTime.Now.AddMinutes(refreshTokenValityInMinutes);
 
-            await _userManager.UpdateAsync(user);
+            await _userServices.UpdateAsync(user);
 
             return Ok(new
             {
@@ -115,7 +116,7 @@ public class AuthController : ControllerBase
 
         string username = principal.Identity.Name;
 
-        var user = await _userManager.FindByNameAsync(username!);
+        var user = await _userServices .FindByNameAsync(username!);
 
         if (user == null || user.RefrshToken != refreshToken || user.RefrshTokenExpiryTime <= DateTime.Now)
         {
@@ -127,7 +128,7 @@ public class AuthController : ControllerBase
         var newRefreshToken = _tokenService.GenerateRefreshToken();
 
         user.RefrshToken = newRefreshToken;
-        await _userManager.UpdateAsync(user);
+        await _userServices.UpdateAsync(user);
 
         return new ObjectResult(new
         {
@@ -142,7 +143,7 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> AddUserToRole(string email, string roleName)
     {
-        var user = await _userManager.FindByEmailAsync(email);
+        var user = await _userServices.FindByEmailAsync(email);
 
         if (user != null)
         {
@@ -165,12 +166,12 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Revoke(string username)
     {
-        var user = await _userManager.FindByNameAsync(username);
+        var user = await _userServices.FindByNameAsync(username);
 
         if (user == null) return BadRequest("Invalid user name");
 
         user.RefrshToken = null;
-        await _userManager.UpdateAsync(user);
+        await _userServices.UpdateAsync(user);
 
         return NoContent();
     }
