@@ -44,12 +44,16 @@ public class UserServices
         await _userManager.UpdateAsync(user);
     }
 
-    public async Task AddRoleAsync(ApplicationUser user, string role)
+    public async Task<IdentityResult> AddToRoleAsync(string email, string role)
     {
+        var user = await _userManager.FindByEmailAsync(email);
+
+        if (user == null) return IdentityResult.Failed(new IdentityError { Description = "User not found" });
+
         var roleExists = await _roleManager.RoleExistsAsync(role);
 
         if (!roleExists) await _roleManager.CreateAsync(new IdentityRole(role));
 
-        await _userManager.AddToRoleAsync(user, role);
+        return await _userManager.AddToRoleAsync(user, role);
     }
 }

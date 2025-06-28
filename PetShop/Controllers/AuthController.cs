@@ -139,30 +139,25 @@ public class AuthController : ControllerBase
 
     [Authorize(Policy = "AdminOnly")]
     [HttpPost]
-    [Route("AddToRole")]
+    [Route("AddUserToRole")]
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> AddUserToRole(string email, string roleName)
     {
-        var user = await _userServices.FindByEmailAsync(email);
+        var result = await _userServices.AddToRoleAsync(email, roleName);
 
-        if (user != null)
+        if (result.Succeeded)
         {
-            var result = await _userManager.AddToRoleAsync(user, roleName);
-
-            if (result.Succeeded)
-            {
-                return StatusCode(StatusCodes.Status200OK, new ResponseDto { Status = "Success", Message = $"User{user.Email} added to the {roleName} role" });
-            }
-            else
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, new ResponseDto { Status = "Error", Message = $"Error: Unable to add user {user.Email} to the  {roleName} role" });
-            }
+            return StatusCode(StatusCodes.Status200OK, new ResponseDto { Status = "Success", Message = $"User{email} added to the {roleName} role" });
         }
-        return BadRequest(new { error = "Unable to find user" });
+        else
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, new ResponseDto { Status = "Error", Message = $"Error: Unable to add user {email} to the  {roleName} role" });
+        }
     }
 
     [Authorize(Policy = "AdminOnly")]
     [HttpPost]
+    [Route("Revoke")]
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Revoke(string username)
     {
