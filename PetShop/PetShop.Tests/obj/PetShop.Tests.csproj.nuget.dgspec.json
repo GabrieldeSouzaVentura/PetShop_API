@@ -90,6 +90,10 @@
               "target": "Package",
               "version": "[8.12.1, )"
             },
+            "xunit.assert": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
             "xunit.extensibility.core": {
               "target": "Package",
               "version": "[2.9.3, )"
@@ -204,6 +208,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
+              "version": "[9.0.301, 9.0.301]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

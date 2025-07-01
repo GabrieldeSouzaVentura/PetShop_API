@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YuLca2hlUDo=",
+  "dgSpecHash": "ZLCi/kA14b4=",
   "success": true,
   "projectFilePath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.Tests\\PetShop.Tests.csproj",
   "expectedPackageFiles": [
@@ -88,20 +88,19 @@
     "C:\\Users\\milen\\.nuget\\packages\\xunit\\2.9.2\\xunit.2.9.2.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\xunit.analyzers\\1.16.0\\xunit.analyzers.1.16.0.nupkg.sha512",
-    "C:\\Users\\milen\\.nuget\\packages\\xunit.assert\\2.9.2\\xunit.assert.2.9.2.nupkg.sha512",
+    "C:\\Users\\milen\\.nuget\\packages\\xunit.assert\\2.9.3\\xunit.assert.2.9.3.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\xunit.core\\2.9.2\\xunit.core.2.9.2.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\xunit.extensibility.core\\2.9.3\\xunit.extensibility.core.2.9.3.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\xunit.extensibility.execution\\2.9.2\\xunit.extensibility.execution.2.9.2.nupkg.sha512",
-    "C:\\Users\\milen\\.nuget\\packages\\xunit.runner.visualstudio\\2.8.2\\xunit.runner.visualstudio.2.8.2.nupkg.sha512"
+    "C:\\Users\\milen\\.nuget\\packages\\xunit.runner.visualstudio\\2.8.2\\xunit.runner.visualstudio.2.8.2.nupkg.sha512",
+    "C:\\Users\\milen\\.nuget\\packages\\microsoft.net.sdk.compilers.toolset\\9.0.301\\microsoft.net.sdk.compilers.toolset.9.0.301.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1608",
       "level": "Warning",
-      "message": "Versão detectada do pacote fora da restrição de dependência: xunit.core 2.9.2 requer xunit.extensibility.core (= 2.9.2), mas a versão xunit.extensibility.core 2.9.3 foi resolvida.",
-      "projectPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.Tests\\PetShop.Tests.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.Tests\\PetShop.Tests.csproj",
+      "message": "Versão detectada do pacote fora da restrição de dependência: xunit.core 2.9.2 requer xunit.extensibility.core (= 2.9.2), mas a versão xunit.extensibility.core 2.9.3 foi resolvida.",
       "libraryId": "xunit.extensibility.core",
       "targetGraphs": [
         "net9.0"
@@ -110,10 +109,8 @@
     {
       "code": "NU1608",
       "level": "Warning",
-      "message": "Versão detectada do pacote fora da restrição de dependência: xunit.extensibility.execution 2.9.2 requer xunit.extensibility.core (= 2.9.2), mas a versão xunit.extensibility.core 2.9.3 foi resolvida.",
-      "projectPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.Tests\\PetShop.Tests.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.Tests\\PetShop.Tests.csproj",
+      "message": "Versão detectada do pacote fora da restrição de dependência: xunit.extensibility.execution 2.9.2 requer xunit.extensibility.core (= 2.9.2), mas a versão xunit.extensibility.core 2.9.3 foi resolvida.",
       "libraryId": "xunit.extensibility.core",
       "targetGraphs": [
         "net9.0"
