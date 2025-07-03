@@ -1,6 +1,0 @@
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PetShop\PetShop.Tests\bin\Debug\net9.0\.msCoverageSourceRootsMapping_PetShop.Tests
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PetShop\PetShop.Tests\bin\Debug\net9.0\CoverletSourceRootsMapping_PetShop.Tests
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PetShop\PetShop.Tests\obj\Debug\net9.0\PetShop.Tests.csproj.AssemblyReference.cache
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PetShop\PetShop.Tests\obj\Debug\net9.0\PetShop.Tests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PetShop\PetShop.Tests\obj\Debug\net9.0\PetShop.Tests.csproj.CoreCompileInputs.cache
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PetShop\PetShop.Tests\obj\Debug\net9.0\PetShop.Tests.sourcelink.json
