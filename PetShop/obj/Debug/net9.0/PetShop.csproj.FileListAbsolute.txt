@@ -1,9 +1,0 @@
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.csproj.AssemblyReference.cache
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\rpswa.dswa.cache.json
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.AssemblyInfoInputs.cache
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.AssemblyInfo.cs
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.csproj.CoreCompileInputs.cache
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop\PEtshop\obj\Debug\net9.0\PetShop.sourcelink.json
