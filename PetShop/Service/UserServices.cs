@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using PetShop.Models;
+using PetShop.Service.IService;
 
 namespace PetShop.Service;
 
-public class UserServices
+public class UserServices : IUserServices
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
