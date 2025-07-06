@@ -31,20 +31,13 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
     {
-        var userExists = await _userServices.FindByNameAsync(registerDto.UserName);
-        var emailExists = await _userServices.FindByEmailAsync(registerDto.Email);
-
-        if (userExists != null || emailExists != null)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDto { Status = "Error", Message = "User or email already exist" });
-        }
-
         ApplicationUser user = new()
         {
             Email = registerDto.Email,
             SecurityStamp = Guid.NewGuid().ToString(),
             UserName = registerDto?.UserName
         };
+
         var result = await _userServices.CreateUserAsync(user, registerDto.Password);
 
         if (!result.Succeeded)

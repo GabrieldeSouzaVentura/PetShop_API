@@ -17,6 +17,8 @@ public class UserServices : IUserServices
 
     public async Task<ApplicationUser?> FindByNameAsync(string user)
     {
+        if (await _userManager.FindByNameAsync(user) != null) throw new Exception("User exists");
+
         return await _userManager.FindByNameAsync(user);
     }
 
@@ -37,6 +39,10 @@ public class UserServices : IUserServices
 
     public async Task<IdentityResult> CreateUserAsync(ApplicationUser user, string password)
     {
+        if (await _userManager.FindByNameAsync(user.UserName) != null) return IdentityResult.Failed(new IdentityError { Description = "User exists" });
+
+        if (await _userManager.FindByEmailAsync(user.Email) != null) return IdentityResult.Failed(new IdentityError { Description = "Email exists" });
+
         return await _userManager.CreateAsync(user, password);
     }
 
