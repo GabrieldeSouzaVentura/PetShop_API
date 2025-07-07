@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\PetShopTests.csproj": {}
+    "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\PetShopTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\PetShopTests.csproj": {
+    "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\PetShopTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\PetShopTests.csproj",
+        "projectUniqueName": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\PetShopTests.csproj",
         "projectName": "PetShopTests",
-        "projectPath": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\PetShopTests.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\obj\\",
+        "projectPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\PetShopTests.csproj",
+        "packagesPath": "C:\\Users\\milen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\milen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShop\\PetShop.csproj": {
-                "projectPath": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShop\\PetShop.csproj"
+              "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.csproj": {
+                "projectPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.csproj"
               }
             }
           }
@@ -86,6 +86,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
+              "version": "[9.0.301, 9.0.301]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -95,20 +101,20 @@
         }
       }
     },
-    "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShop\\PetShop.csproj": {
+    "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShop\\PetShop.csproj",
+        "projectUniqueName": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.csproj",
         "projectName": "PetShop",
-        "projectPath": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShop\\PetShop.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShop\\obj\\",
+        "projectPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\PetShop.csproj",
+        "packagesPath": "C:\\Users\\milen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\milen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

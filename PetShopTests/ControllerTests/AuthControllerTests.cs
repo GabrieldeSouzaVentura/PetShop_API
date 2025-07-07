@@ -110,4 +110,27 @@ public class AuthControllerTests
         Assert.False(result.Succeeded);
         Assert.Contains(result.Errors, e => e.Description == "User invalid");
     }
+
+    [Fact]
+    public async Task LoginValidTests()
+    {
+        var dto = new LoginDto
+        {
+            UserName = "LoginValid",
+            Password = "Loginvalid.1"
+        };
+
+        _userManagerMock.Setup(u => u.FindByNameAsync(dto.UserName)).ReturnsAsync((ApplicationUser)null!);
+        _userManagerMock.Setup(u => u.CreateAsync(It.IsAny<ApplicationUser>(), dto.Password)).ReturnsAsync(IdentityResult.Success);
+
+        var user = new ApplicationUser
+        {
+            UserName = dto.UserName,
+            PasswordHash = dto.Password
+        };
+
+        var result = await _userServices.CreateUserAsync(user, dto.Password);
+
+        Assert.True(result.Succeeded);
+    }
 }

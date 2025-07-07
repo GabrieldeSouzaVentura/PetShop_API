@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\",
+  "WorkspaceRootPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0388A582-0D3E-837C-683E-4D84EDE36F5C}|PetShopTests.csproj|c:\\users\\user\\documents\\vs studio\\petshop\\petshoptests\\controllertests\\authcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0388A582-0D3E-837C-683E-4D84EDE36F5C}|PetShopTests.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshoptests\\controllertests\\authcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0388A582-0D3E-837C-683E-4D84EDE36F5C}|PetShopTests.csproj|solutionrelative:controllertests\\authcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0388A582-0D3E-837C-683E-4D84EDE36F5C}|PetShopTests.csproj|c:\\users\\user\\documents\\vs studio\\petshop\\petshoptests\\petshoptests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{0388A582-0D3E-837C-683E-4D84EDE36F5C}|PetShopTests.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop\\petshoptests\\petshoptests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{0388A582-0D3E-837C-683E-4D84EDE36F5C}|PetShopTests.csproj|solutionrelative:petshoptests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,30 +33,27 @@
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "PetShopTests.csproj",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\PetShopTests.csproj",
+              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\PetShopTests.csproj",
               "RelativeDocumentMoniker": "PetShopTests.csproj",
-              "ToolTip": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\PetShopTests.csproj",
+              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\PetShopTests.csproj",
               "RelativeToolTip": "PetShopTests.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-05T23:53:35.318Z"
+              "WhenOpened": "2025-07-05T23:53:35.318Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AuthControllerTests.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\ControllerTests\\AuthControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\ControllerTests\\AuthControllerTests.cs",
               "RelativeDocumentMoniker": "ControllerTests\\AuthControllerTests.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\vs studio\\PetShop\\PetShopTests\\ControllerTests\\AuthControllerTests.cs",
+              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop\\PetShopTests\\ControllerTests\\AuthControllerTests.cs",
               "RelativeToolTip": "ControllerTests\\AuthControllerTests.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAEUAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAtwHIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-05T22:15:01.314Z",
               "EditorCaption": ""

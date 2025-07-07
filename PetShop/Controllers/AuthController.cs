@@ -56,41 +56,37 @@ public class AuthController : ControllerBase
         var user = await _userServices.FindByNameAsync(loginDto.UserName!);
         var password = await _userServices.CheckPasswordAsync(user, loginDto.Password!);
 
-        if (user != null && password != null)
-        {
-            var userRoles = await _userServices.GetRolesAsync(user);
+        var userRoles = await _userServices.GetRolesAsync(user);
 
-            var authClaims = new List<Claim>
-            {
+        var authClaims = new List<Claim>
+        {
                 new Claim(ClaimTypes.Name, user.UserName!),
                 new Claim(ClaimTypes.Email, user.Email!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            };
+        };
 
-            foreach (var userRole in userRoles)
-            {
-                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-            }
-
-            var token = _tokenService.GenerateAccessToken(authClaims, _configuration);
-
-            var refreshToken = _tokenService.GenerateRefreshToken();
-
-            _ = int.TryParse(_configuration["JWT:RefreshTokenValityInMinutes"], out int refreshTokenValityInMinutes);
-
-            user.RefrshToken = refreshToken;
-            user.RefrshTokenExpiryTime = DateTime.Now.AddMinutes(refreshTokenValityInMinutes);
-
-            await _userServices.UpdateAsync(user);
-
-            return Ok(new
-            {
-                Token = new JwtSecurityTokenHandler().WriteToken(token),
-                RefreshToken = refreshToken,
-                Expiration = token.ValidTo
-            });
+        foreach (var userRole in userRoles)
+        {
+            authClaims.Add(new Claim(ClaimTypes.Role, userRole));
         }
-        return Unauthorized();
+
+        var token = _tokenService.GenerateAccessToken(authClaims, _configuration);
+
+        var refreshToken = _tokenService.GenerateRefreshToken();
+
+        _ = int.TryParse(_configuration["JWT:RefreshTokenValityInMinutes"], out int refreshTokenValityInMinutes);
+
+        user.RefrshToken = refreshToken;
+        user.RefrshTokenExpiryTime = DateTime.Now.AddMinutes(refreshTokenValityInMinutes);
+
+        await _userServices.UpdateAsync(user);
+
+        return Ok(new
+        {
+            Token = new JwtSecurityTokenHandler().WriteToken(token),
+            RefreshToken = refreshToken,
+            Expiration = token.ValidTo
+        });
     }
 
     [HttpPost]

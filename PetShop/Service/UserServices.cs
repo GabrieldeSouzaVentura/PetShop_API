@@ -29,6 +29,11 @@ public class UserServices : IUserServices
 
     public async Task<bool> CheckPasswordAsync(ApplicationUser user, string password)
     {
+        var userExists = _userManager.FindByNameAsync(user.UserName);
+        var passowordExists = _userManager.CheckPasswordAsync(user ,password);
+
+        if (userExists == null && passowordExists == null) throw new Exception("User or password invalid");
+
         return await _userManager.CheckPasswordAsync(user, password);
     }
 
