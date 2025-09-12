@@ -6,7 +6,5 @@ namespace PetShop.Repositories;
 
 public class TutorRepository : Repository<Tutor>, ITutorRepository
 {
-    public TutorRepository(AppDbContext context) : base(context)
-    {
-    }
+    public TutorRepository(AppDbContext context) : base(context) { }
 }

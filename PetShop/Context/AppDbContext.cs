@@ -5,7 +5,7 @@ using PetShop.Models;
 
 namespace PetShop.Context;
 
-public class AppDbContext : IdentityDbContext<ApplicationUser>
+public class AppDbContext : IdentityDbContext <ApplicationUser, IdentityRole, string>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -16,10 +16,11 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<IdentityRole>().HasData
-        (
-            new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
-            new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
-        );
+        modelBuilder.Entity<Tutor>()
+            .HasOne(t => t.User)
+            .WithOne(u => u.Tutor)
+            .HasForeignKey<Tutor>(t => t.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
+
 }

@@ -15,24 +15,32 @@ public class Repository<T> : IRepository<T> where T : class
         _context = context;
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
-    {
-        return await _context.Set<T>().AsNoTracking().ToListAsync();
-    }
-
-    public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null)
+    public async Task<T?> GetAsync(
+        Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null)
     {
         IQueryable<T> query = _context.Set<T>();
 
-        if (include != null) query = _context.Set<T>();
+        if (include != null) query = include(query);
 
         return await query.FirstOrDefaultAsync(predicate);
     }
 
     public T Create(T entity)
     {
-        _context.Set<T>().Add(entity);
+        _context.Set<T>().AddAsync(entity);
         return entity;
+    }
+
+    public async Task<IEnumerable<T>?> GetAllAsync(
+        Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null)
+    {
+        IQueryable<T> query = _context.Set<T>();
+
+        if (include != null) query = include(query);
+
+        if (predicate != null) query = query.Where(predicate);
+
+        return await query.AsNoTracking().ToListAsync();
     }
 
     public T Update(T entity)
@@ -45,5 +53,10 @@ public class Repository<T> : IRepository<T> where T : class
     {
         _context.Set<T>().Remove(entity);
         return entity;
+    }
+
+    public void DeleteRange(IEnumerable<T> entities)
+    {
+        _context.Set<T>().RemoveRange(entities);
     }
 }

@@ -1,5 +1,4 @@
 # 🐱🐶 PetShop_API  
-**In Progress...**  
 **Junior Backend Developer Task**
 
 ---
@@ -11,7 +10,6 @@
 - **ASP.NET Core with Entity Framework Core**  
 - **🔐 User authentication**  
 - **📂 Relational database: SQLite**  
-- **📁 Non-relational database: MongoDB**
 
 ---
 
@@ -46,8 +44,53 @@
 ## 🛠️ Main Technologies, Frameworks, and Libraries:
 
 - **Backend:** .NET C#  
-- **Databases:** SQLite (in-memory), MongoDB
+- **Databases:** SQLite (in-memory)
 
 ---
 
-**In Progress...**
+## How to configure
+
+Prerequisites
+- **.Net 8.0**
+- **Visual Studio 2022**
+
+### 2. Clone repository
+````
+gh repo clone GabrieldeSouzaVentura/PetShop_API
+````
+- **open with visual studio 2022**
+
+---
+
+## 🔧Endpoints
+
+### 🎮AuthController 
+- `Login` - Login user
+- `Register` - Register user (**Admin**)
+- `RefreshToken` - Refresh Token
+- `AddUserToRole` - Add users to roles (**Admin**)
+- `GetUserInformations` - Get Informatins (**User**)
+- `GetByNameUser{name}` - Get name user (**Admin**)
+- `UpdateUser` - Update informations user (**Admin**)
+- `Delete` - Delete user (**Admin**)
+
+### 👩👨Tutor
+- `RegisterTutor` - Register tutor (**Admin**)
+- `GetByNameTutor` - Get name tutor (**Admin**)
+- `GetAllInformationsTutors` - Get tutor informations (**User**)
+- `UpdateTutor` - Update tutor informations (**Admin**)
+- `DeleteTutor` - Delete tutor (**Admin**)
+
+
+### 🐕🐈Pets
+- `RegisterPet` - Register pets (**Admin**)
+- `GetByNamePet` - Get name pets (**User**)
+- `GetAllPets` - Get pets list (**User**)
+- `UpdatePet` - Update pets informations (**Admin**)
+- `DeletePet` - Delete pets (**Admin**)
+
+---
+
+## ⚠️Attention⚠️
+
+- **🔧appsetings.json is configured in test mode, the secret key and other information must be stored in environment variables or using user secrets🔧**

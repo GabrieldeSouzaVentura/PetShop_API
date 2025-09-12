@@ -5,8 +5,8 @@ namespace PetShop.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private ITutorRepository _tutorRepository;
-    private IPetRepository _petRepository;
+    private ITutorRepository? _tutorRepository;
+    private IPetRepository? _petRepository;
 
     public AppDbContext _context;
     public UnitOfWork(AppDbContext context)
