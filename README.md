@@ -56,7 +56,7 @@ Prerequisites
 
 ### 2. Clone repository
 ````
-gh repo clone GabrieldeSouzaVentura/PetShop_API
+https://github.com/GabrieldeSouzaVentura/PetShop_API.git
 ````
 - **open with visual studio 2022**
 
