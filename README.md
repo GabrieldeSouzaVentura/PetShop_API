@@ -3,7 +3,7 @@
 
 ---
 
-**Pet Shop** is a RESTful API for managing pet owners (guardians) and their pets.
+**Pet Shop** is a REST API for managing pet owners (guardians) and their pets.
 
 ## 🛠️ Built with C# using:
 
