@@ -1,0 +1,6 @@
+@PetShop.Application_HostAddress = http://localhost:5048
+
+GET {{PetShop.Application_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
