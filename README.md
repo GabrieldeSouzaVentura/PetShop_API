@@ -10,6 +10,7 @@
 - **ASP.NET Core with Entity Framework Core**  
 - **🔐 User authentication**  
 - **📂 Relational database: SQLite**  
+- **🏢Clean Architecture**
 
 ---
 
