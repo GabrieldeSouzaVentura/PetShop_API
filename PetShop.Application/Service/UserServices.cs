@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using PetShop.DTOs.JwtDtos;
 using PetShop.Models;
 using PetShop.PetShop.Application.Service.IService;
-using PetShop.PetShop.Infrastructure.Context;
 
 namespace PetShop.PetShop.Application.Service;
 
