@@ -9,6 +9,5 @@ public interface ITutorServices
     Task<ResponseTutorDto> GetByNameTutor(string name);
     Task<ResponseTutorDto> GetAllInformationsTutor();
     Task<UpdateTutorDto> UpdateTutor(int id, UpdateTutorDto updateTutorDto);
-    Task Delete(int id);
-
+    Task<bool> DeleteTutor(int id);
 }
