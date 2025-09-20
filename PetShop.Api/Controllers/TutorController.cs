@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PetShop.Application.Service.IService;
 using PetShop.DTOs;
 using PetShop.DTOs.TutorDtos;
 using PetShop.Models;
@@ -19,12 +20,14 @@ public class TutorController : ControllerBase
     private readonly IUnitOfWork _unitOfWork;
     private readonly IUserServices _userServices;
     private readonly IMapper _mapper;
+    private readonly ITutorServices _tutorServices;
 
-    public TutorController(IUnitOfWork unitOfWork, IUserServices userServices, IMapper mapper)
+    public TutorController(IUnitOfWork unitOfWork, IUserServices userServices, IMapper mapper, ITutorServices tutorServices)
     {
         _unitOfWork = unitOfWork;
         _userServices = userServices;
         _mapper = mapper;
+        _tutorServices = tutorServices;
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -99,19 +102,11 @@ public class TutorController : ControllerBase
     [HttpDelete]
     [Route("DeleteTutor/{id}")]
     [ServiceFilter(typeof(PetShopExceptionFilter))]
-    public async Task<ActionResult> DeleteTutor(int id)
+    public async Task<IActionResult> DeleteTutor(int id)
     {
-        var tutor = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == id, i => i.Include(p => p.Pets));
-        if (tutor == null) return NotFound("Tutor not found");
+        var result = await _tutorServices.DeleteTutor(id);
 
-        if (tutor.Pets != null && tutor.Pets.Any()) { _unitOfWork.PetRepository.DeleteRange(tutor.Pets); }
-
-        _unitOfWork.TutorRepository.Delete(tutor);
-
-        await _unitOfWork.CommitAsync();
-
-        var result = await _userServices.DeleteUserAsync(id);
-        if (!result.Succeeded) return BadRequest(result.Errors);
+        if (result == true) return BadRequest("Error delete ");
 
         return Ok("Tutor, pets and user successfully deleted");
     }
