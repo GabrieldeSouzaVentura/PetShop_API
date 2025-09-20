@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PetShop.Application.Service.IService;
 using PetShop.DTOs;
@@ -41,23 +39,54 @@ public class TutorServises : ITutorServices
         return result.Succeeded;
     }
 
-    public Task<ResponseTutorDto> GetAllInformationsTutor()
+    public async Task<IEnumerable<ResponseTutorDto>> GetAllInformationsTutor()
     {
-        throw new NotImplementedException();
+        var filter = await _userServices.GetFilterByUserAsync<Tutor, int>(p => p.TutorId);
+
+        var tutors = await _unitOfWork.TutorRepository.GetAllAsync(filter!, t => t.Include(i => i.Pets));
+
+        if (tutors is null || !tutors.Any()) throw new Exception("There are no registered tutors");
+
+        var tutorsDto = _mapper.Map<IEnumerable<ResponseTutorDto>>(tutors);
+
+        return tutorsDto;
     }
 
-    public Task<ResponseTutorDto> GetByNameTutor(string name)
+    public async Task<ResponseTutorDto> GetByNameTutor(string name)
     {
-        throw new NotImplementedException();
+        var result = await _unitOfWork.TutorRepository.GetAsync(n => n.Name == name, i => i.Include(p => p.Pets));
+
+        if (result is null) throw new Exception("Name not found");
+
+        var tutorDto = _mapper.Map<ResponseTutorDto>(result);
+
+        return tutorDto;
     }
 
-    public Task<ResponseTutorDto> RegisterTutor(RegisterTutorDto registerTutorDto)
+    public async Task<ResponseTutorDto> RegisterTutor(RegisterTutorDto registerTutorDto)
     {
-        throw new NotImplementedException();
+        var tutor = _mapper.Map<Tutor>(registerTutorDto);
+
+        var creatTutor = _unitOfWork.TutorRepository.Create(tutor);
+        await _unitOfWork.CommitAsync();
+
+        var newTutor = _mapper.Map<ResponseTutorDto>(creatTutor);
+
+        return newTutor;
     }
 
-    public Task<UpdateTutorDto> UpdateTutor(int id, UpdateTutorDto updateTutorDto)
+    public async Task<UpdateTutorDto> UpdateTutor(int id, UpdateTutorDto updateTutorDto)
     {
-        throw new NotImplementedException();
+        var user = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == id);
+        if (user == null) throw new Exception("Tutor not found");
+
+        var tutor = _mapper.Map(updateTutorDto, user);
+
+        var tutorUpdate = _unitOfWork.TutorRepository.Update(tutor);
+        await _unitOfWork.CommitAsync();
+
+        var tutorUpdateDto = _mapper.Map<UpdateTutorDto>(tutorUpdate);
+
+        return tutorUpdateDto;
     }
 }
