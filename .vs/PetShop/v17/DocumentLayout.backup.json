@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop_API\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B37B564B-F013-4C93-9FAA-3E71836363AD}|PetShop.Application\\PetShop.Application.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop_api\\petshop.application\\service\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37B564B-F013-4C93-9FAA-3E71836363AD}|PetShop.Application\\PetShop.Application.csproj|solutionrelative:petshop.application\\service\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B37B564B-F013-4C93-9FAA-3E71836363AD}|PetShop.Application\\PetShop.Application.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop_api\\petshop.application\\petshop.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{B37B564B-F013-4C93-9FAA-3E71836363AD}|PetShop.Application\\PetShop.Application.csproj|solutionrelative:petshop.application\\petshop.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76EB699B-29C9-4FBF-BBBF-871D0002DE5A}|PetShop.Infrastructure\\PetShop.Infrastructure.csproj|c:\\users\\milen\\onedrive\\documentos\\visual studio api\\petshop_api\\petshop.infrastructure\\petshop.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{76EB699B-29C9-4FBF-BBBF-871D0002DE5A}|PetShop.Infrastructure\\PetShop.Infrastructure.csproj|solutionrelative:petshop.infrastructure\\petshop.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,45 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PetShop.Infrastructure",
-              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop_API\\PetShop.Infrastructure\\PetShop.Infrastructure.csproj",
-              "RelativeDocumentMoniker": "PetShop.Infrastructure\\PetShop.Infrastructure.csproj",
-              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop_API\\PetShop.Infrastructure\\PetShop.Infrastructure.csproj",
-              "RelativeToolTip": "PetShop.Infrastructure\\PetShop.Infrastructure.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-17T00:21:16.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserServices.cs",
-              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop_API\\PetShop.Application\\Service\\UserServices.cs",
-              "RelativeDocumentMoniker": "PetShop.Application\\Service\\UserServices.cs",
-              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop_API\\PetShop.Application\\Service\\UserServices.cs",
-              "RelativeToolTip": "PetShop.Application\\Service\\UserServices.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-17T00:20:49.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PetShop.Application",
-              "DocumentMoniker": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop_API\\PetShop.Application\\PetShop.Application.csproj",
-              "RelativeDocumentMoniker": "PetShop.Application\\PetShop.Application.csproj",
-              "ToolTip": "C:\\Users\\milen\\OneDrive\\Documentos\\Visual Studio API\\PetShop_API\\PetShop.Application\\PetShop.Application.csproj",
-              "RelativeToolTip": "PetShop.Application\\PetShop.Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-17T00:20:41.981Z",
-              "EditorCaption": ""
             }
           ]
         }
