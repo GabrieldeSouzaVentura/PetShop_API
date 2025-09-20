@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PetShop.Application.Service.IService;
 using PetShop.DTOs;
 using PetShop.DTOs.TutorDtos;
@@ -17,16 +16,10 @@ namespace PetShop.PetShop.Api.Controllers;
 
 public class TutorController : ControllerBase
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IUserServices _userServices;
-    private readonly IMapper _mapper;
     private readonly ITutorServices _tutorServices;
 
-    public TutorController(IUnitOfWork unitOfWork, IUserServices userServices, IMapper mapper, ITutorServices tutorServices)
+    public TutorController(ITutorServices tutorServices)
     {
-        _unitOfWork = unitOfWork;
-        _userServices = userServices;
-        _mapper = mapper;
         _tutorServices = tutorServices;
     }
 
@@ -36,16 +29,11 @@ public class TutorController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<Tutor>> RegisterTutor([FromBody] RegisterTutorDto registerTutorDto)
     {
-        if (registerTutorDto == null) return BadRequest("Tutor is invalid");
+        if (registerTutorDto == null) return BadRequest("Tutor is null");
 
-        var tutor = _mapper.Map<Tutor>(registerTutorDto);
+        var registerTutor = await _tutorServices.RegisterTutor(registerTutorDto);
 
-        var creatTutor = _unitOfWork.TutorRepository.Create(tutor);
-        await _unitOfWork.CommitAsync();
-
-        var newTutor = _mapper.Map<ResponseTutorDto>(creatTutor);
-
-        return Ok(newTutor);
+        return Ok(registerTutor);
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -54,12 +42,11 @@ public class TutorController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<ResponseTutorDto>> GetByNameTutor(string name)
     {
-        var result = await _unitOfWork.TutorRepository.GetAsync(n => n.Name == name, i => i.Include(p => p.Pets));
+        if (name == null) return BadRequest("Name is null");
 
-        if (result is null) return NotFound("Name not found");
+        var getByNameTutor = await _tutorServices.GetByNameTutor(name);
 
-        var tutorDto = _mapper.Map<ResponseTutorDto>(result);
-        return Ok(tutorDto);
+        return Ok(getByNameTutor);
     }
 
     [Authorize(Policy = "UserOnly")]
@@ -68,15 +55,11 @@ public class TutorController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<IEnumerable<ResponseTutorDto>>> GetAllInformationsTutors()
     {
-        var filter = await _userServices.GetFilterByUserAsync<Tutor, int>(p => p.TutorId);
+        var tutor = await _tutorServices.GetAllInformationsTutor();
 
-        var tutors = await _unitOfWork.TutorRepository.GetAllAsync(filter!, t => t.Include(i => i.Pets));
+        if (tutor is null) return NotFound("Tutor not found");
 
-        if (tutors is null || !tutors.Any()) return NotFound("There are no registered tutors");
-
-        var tutorsDto = _mapper.Map<IEnumerable<ResponseTutorDto>>(tutors);
-
-        return Ok(tutorsDto);
+        return Ok(tutor);
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -85,17 +68,9 @@ public class TutorController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<UpdateTutorDto>> UpdateTutor(int id, UpdateTutorDto updateTutorDto)
     {
-        var user = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == id);
-        if (user == null) return NotFound("Tutor not found");
+        var updateTutor = await _tutorServices.UpdateTutor(id, updateTutorDto);
 
-        var tutor = _mapper.Map(updateTutorDto, user);
-
-        var tutorUpdate = _unitOfWork.TutorRepository.Update(tutor);
-        await _unitOfWork.CommitAsync();
-
-        var tutorUpdateDto = _mapper.Map<UpdateTutorDto>(tutorUpdate);
-
-        return Ok(tutorUpdateDto);
+        return Ok(updateTutorDto);
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -106,7 +81,7 @@ public class TutorController : ControllerBase
     {
         var result = await _tutorServices.DeleteTutor(id);
 
-        if (result == true) return BadRequest("Error delete ");
+        if (result == false) return BadRequest("Error delete tutor");
 
         return Ok("Tutor, pets and user successfully deleted");
     }

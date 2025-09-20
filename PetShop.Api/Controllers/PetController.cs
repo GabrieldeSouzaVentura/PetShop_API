@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PetShop.Application.Service.IService;
 using PetShop.DTOs.PetDtos;
 using PetShop.Models;
 using PetShop.PetShop.Api.Filters;
@@ -16,12 +17,14 @@ public class PetController : ControllerBase
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IUserServices _userServices;
+    private readonly IPetServices _petServices;
 
-    public PetController(IUnitOfWork unitOfWork, IMapper mapper, IUserServices userServices)
+    public PetController(IUnitOfWork unitOfWork, IMapper mapper, IUserServices userServices, IPetServices petServices)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
         _userServices = userServices;
+        _petServices = petServices;
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -69,15 +72,19 @@ public class PetController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<IEnumerable<ResponsePetDto>>> GetAllPet()
     {
-        var filter = await _userServices.GetFilterByUserAsync<Pet, int>(t => t.TutorId);
+        var getAllPet = await _petServices.GetAllPets();
 
-        var pets = await _unitOfWork.PetRepository.GetAllAsync(filter!);
+        return Ok(getAllPet);
 
-        if (pets is null || !pets.Any()) return NotFound("Pets not found");
+        //var filter = await _userServices.GetFilterByUserAsync<Pet, int>(t => t.TutorId);
 
-        var petsDto = _mapper.Map<IEnumerable<ResponsePetDto>>(pets);
+        //var pets = await _unitOfWork.PetRepository.GetAllAsync(filter!);
 
-        return Ok(petsDto);
+        //if (pets is null || !pets.Any()) return NotFound("Pets not found");
+
+        //var petsDto = _mapper.Map<IEnumerable<ResponsePetDto>>(pets);
+
+        //return Ok(petsDto);
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -104,14 +111,12 @@ public class PetController : ControllerBase
     [HttpDelete]
     [Route("DeletePet/{id}")]
     [ServiceFilter(typeof(PetShopExceptionFilter))]
-    public async Task<ActionResult<Pet>> DeletePet(int id)
+    public async Task<IActionResult> DeletePet(int id)
     {
-        var pet = await _unitOfWork.PetRepository.GetAsync(p => p.PetId == id);
-        if (pet == null) return NotFound("Pet not found");
+        var result = await _petServices.DeletePet(id);
 
-        var petDelete = _unitOfWork.PetRepository.Delete(pet);
-        await _unitOfWork.CommitAsync();
+        if (result == true) return BadRequest("Error delete pet");
 
-        return Ok(petDelete);
+        return Ok("Pets successfully deleted");
     }
 }
