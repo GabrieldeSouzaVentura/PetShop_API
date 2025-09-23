@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PetShop.Application.Service.Exceptions;
 using PetShop.Application.Service.IService;
 using PetShop.DTOs;
 using PetShop.DTOs.TutorDtos;
@@ -26,7 +27,7 @@ public class TutorServises : ITutorServices
     {
         var tutor = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == id, i => i.Include(p => p.Pets));
 
-        if (tutor == null) throw new Exception("Tutor not found");
+        if (tutor == null) throw new ResourceNotFoundException($"Tutor: {id} not found");
 
         if (tutor.Pets != null && tutor.Pets.Any()) { _unitOfWork.PetRepository.DeleteRange(tutor.Pets); }
 
@@ -45,7 +46,7 @@ public class TutorServises : ITutorServices
 
         var tutors = await _unitOfWork.TutorRepository.GetAllAsync(filter!, t => t.Include(i => i.Pets));
 
-        if (tutors is null || !tutors.Any()) throw new Exception("There are no registered tutors");
+        if (tutors is null || !tutors.Any()) throw new ResourceNotFoundException("There are no registered tutors");
 
         var tutorsDto = _mapper.Map<IEnumerable<ResponseTutorDto>>(tutors);
 
@@ -56,7 +57,7 @@ public class TutorServises : ITutorServices
     {
         var result = await _unitOfWork.TutorRepository.GetAsync(n => n.Name == name, i => i.Include(p => p.Pets));
 
-        if (result is null) throw new Exception("Name not found");
+        if (result is null) throw new ResourceNotFoundException($"Name: {name} not found");
 
         var tutorDto = _mapper.Map<ResponseTutorDto>(result);
 
@@ -68,6 +69,7 @@ public class TutorServises : ITutorServices
         var tutor = _mapper.Map<Tutor>(registerTutorDto);
 
         var creatTutor = _unitOfWork.TutorRepository.Create(tutor);
+
         await _unitOfWork.CommitAsync();
 
         var newTutor = _mapper.Map<ResponseTutorDto>(creatTutor);
@@ -78,11 +80,13 @@ public class TutorServises : ITutorServices
     public async Task<UpdateTutorDto> UpdateTutor(int id, UpdateTutorDto updateTutorDto)
     {
         var user = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == id);
-        if (user == null) throw new Exception("Tutor not found");
+
+        if (user == null) throw new ResourceNotFoundException($"Tutor: {id} not found");
 
         var tutor = _mapper.Map(updateTutorDto, user);
 
         var tutorUpdate = _unitOfWork.TutorRepository.Update(tutor);
+
         await _unitOfWork.CommitAsync();
 
         var tutorUpdateDto = _mapper.Map<UpdateTutorDto>(tutorUpdate);
