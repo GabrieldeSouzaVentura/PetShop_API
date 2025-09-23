@@ -33,20 +33,11 @@ public class PetController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<Pet>> RegisterMyPet([FromBody] RegisterPetDto registerPetDto)
     {
-        if (registerPetDto is null) return BadRequest("Pet invalid");
+        if (registerPetDto is null) return BadRequest("Inconsistent pet data");
 
-        var tutorExists = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == registerPetDto.TutorId);
+        var registerPet = await _petServices.RegisterPet(registerPetDto);
 
-        if (tutorExists == null) return BadRequest("Tutor is invalid");
-
-        var pet = _mapper.Map<Pet>(registerPetDto);
-
-        var petCreate = _unitOfWork.PetRepository.Create(pet);
-        await _unitOfWork.CommitAsync();
-
-        var newPet = _mapper.Map<ResponsePetDto>(petCreate);
-
-        return Ok(newPet);
+        return Ok(registerPet);
     }
 
     [Authorize(Policy = "UserOnly")]
@@ -55,15 +46,11 @@ public class PetController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<ResponsePetDto>> GetByPetName(string name)
     {
-        var filter = await _userServices.GetFilterByNameAndUserAsync<Pet, int>(name, t => t.Name!, t => t.TutorId);
+        if (name is null) return BadRequest("Name is required");
 
-        var pets = await _unitOfWork.PetRepository.GetAsync(filter);
+        var getByNamePet = await _petServices.GetByNamePet(name);
 
-        if (pets == null) return NotFound("Pets not found");
-
-        var petsDto = _mapper.Map<ResponsePetDto>(pets);
-
-        return Ok(petsDto);
+        return Ok(getByNamePet);
     }
 
     [Authorize(Policy = "UserOnly")]
@@ -75,16 +62,6 @@ public class PetController : ControllerBase
         var getAllPet = await _petServices.GetAllPets();
 
         return Ok(getAllPet);
-
-        //var filter = await _userServices.GetFilterByUserAsync<Pet, int>(t => t.TutorId);
-
-        //var pets = await _unitOfWork.PetRepository.GetAllAsync(filter!);
-
-        //if (pets is null || !pets.Any()) return NotFound("Pets not found");
-
-        //var petsDto = _mapper.Map<IEnumerable<ResponsePetDto>>(pets);
-
-        //return Ok(petsDto);
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -93,18 +70,11 @@ public class PetController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<UpdatePetDto>> UpdatePet(int id, UpdatePetDto updatePetDto)
     {
-        var user = await _unitOfWork.PetRepository.GetAsync(p => p.PetId == id);
-        var tutorExists = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == updatePetDto.TutorId);
-        if (user == null || tutorExists == null) return NotFound("Pet or tutor not found");
+        if (updatePetDto is null) return BadRequest("Inconsistent pet data");
 
-        var pet = _mapper.Map(updatePetDto, user);
+        var updatePet = await _petServices.UpdatePet(id,updatePetDto);
 
-        var petUpdate = _unitOfWork.PetRepository.Update(pet);
-        await _unitOfWork.CommitAsync();
-
-        var petUpdateDto = _mapper.Map<UpdatePetDto>(petUpdate);
-
-        return Ok(petUpdateDto);
+        return Ok(updatePet);
     }
 
     [Authorize(Policy = "AdminOnly")]
