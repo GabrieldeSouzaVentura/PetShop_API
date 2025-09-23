@@ -29,7 +29,7 @@ public class TutorController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<Tutor>> RegisterTutor([FromBody] RegisterTutorDto registerTutorDto)
     {
-        if (registerTutorDto == null) return BadRequest("Tutor is null");
+        if (registerTutorDto == null) return BadRequest("Inconsistent tutor data");
 
         var registerTutor = await _tutorServices.RegisterTutor(registerTutorDto);
 
@@ -42,7 +42,7 @@ public class TutorController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<ResponseTutorDto>> GetByNameTutor(string name)
     {
-        if (name == null) return BadRequest("Name is null");
+        if (name == null) return BadRequest("Name is required");
 
         var getByNameTutor = await _tutorServices.GetByNameTutor(name);
 
@@ -68,6 +68,8 @@ public class TutorController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<ActionResult<UpdateTutorDto>> UpdateTutor(int id, UpdateTutorDto updateTutorDto)
     {
+        if (updateTutorDto is null) return BadRequest("Inconsistent tutor data");
+
         var updateTutor = await _tutorServices.UpdateTutor(id, updateTutorDto);
 
         return Ok(updateTutorDto);
