@@ -12,18 +12,15 @@ public class UserServices : IUserServices
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly AppDbContext _context;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IMapper _mapper;
 
     public UserServices(
         UserManager<ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager,
-        AppDbContext context,
         IHttpContextAccessor httpContextAccessor,
         IMapper mapper)
     {
-        _context = context;
         _userManager = userManager;
         _roleManager = roleManager;
         _httpContextAccessor = httpContextAccessor;
