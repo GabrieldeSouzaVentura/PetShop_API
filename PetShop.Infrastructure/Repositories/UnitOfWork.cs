@@ -1,5 +1,4 @@
-﻿using PetShop.Domain.IRepositories;
-using PetShop.PetShop.Infrastructure.Context;
+﻿using PetShop.PetShop.Infrastructure.Context;
 using PetShop.Repositories.IRepositories;
 
 namespace PetShop.PetShop.Infrastructure.Repositories;
@@ -8,7 +7,6 @@ public class UnitOfWork : IUnitOfWork
 {
     private ITutorRepository? _tutorRepository;
     private IPetRepository? _petRepository;
-    private IUserRepository? _userRepository;
 
     public AppDbContext _context;
     public UnitOfWork(AppDbContext context)

@@ -3,3 +3,11 @@ C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\
 C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Application\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Application\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.build.json

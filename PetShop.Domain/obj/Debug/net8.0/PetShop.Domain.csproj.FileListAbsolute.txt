@@ -21,3 +21,4 @@ C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\
 C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\refint\PetShop.Domain.dll
 C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\PetShop.Domain.pdb
 C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\ref\PetShop.Domain.dll
+C:\Users\milen\OneDrive\Documentos\Visual Studio API\PetShop_API\PetShop.Domain\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
