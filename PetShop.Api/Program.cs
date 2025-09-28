@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using PetShop.Application.Service;
+using PetShop.Application.Service.IService;
 using PetShop.DTOs;
 using PetShop.Models;
 using PetShop.PetShop.Api.Extensions;
@@ -54,7 +56,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 string? SqlConection = builder.Configuration.GetConnectionString("SQl");
-builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlite(SqlConection));
+builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlite(SqlConection, b => b.MigrationsAssembly("PetShop.Infrastructure")));
 
 var secretKey = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentException("Invalid secret key");
 
@@ -103,6 +105,8 @@ builder.Services.AddScoped<PetShopExceptionFilter>();
 builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<ITutorServices, TutorServises>();
+builder.Services.AddScoped<IPetServices, PetServices>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddHttpContextAccessor();
 
