@@ -3,6 +3,7 @@ using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PetShop.Application.Service.IService;
 using PetShop.DTOs.JwtDtos;
 using PetShop.Models;
 using PetShop.PetShop.Api.Filters;
@@ -15,24 +16,11 @@ namespace PetShop.PetShop.Api.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly ITokenService _tokenService;
-    private readonly IUserServices _userServices;
-    private readonly IConfiguration _configuration;
-    private readonly IMapper _mapper;
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IAuthServices _authServices;
 
-    public AuthController(
-        IUnitOfWork unitOfWork,
-        ITokenService tokenService,
-        IConfiguration configuration, 
-        IUserServices userServices, 
-        IMapper mapper)
+    public AuthController(IAuthServices authServices)
     {
-        _unitOfWork = unitOfWork;
-        _userServices = userServices;
-        _tokenService = tokenService;
-        _configuration = configuration;
-        _mapper = mapper;
+        _authServices = authServices;
     }
 
     [HttpPost]
@@ -40,52 +28,11 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
-        var user = await _userServices.FindByNameAsync(loginDto.UserName!);
+        var authResponse = await _authServices.LoginAsync(loginDto);
 
-        if (user == null || !await _userServices.CheckPasswordAsync(user, loginDto.Password!))
-            return Unauthorized(new { Message = "Invalid credentials" });
+        if (authResponse == null) return Unauthorized(new { Message = "Invalid credentials or missing required information" });
 
-        var userRoles = await _userServices.GetRolesAsync(user);
-
-        var isAdmin = userRoles.Contains("Admin");
-
-        if (user.TutorId == null && !isAdmin) 
-        {
-            return Unauthorized(new { Message = "Tutor id is missing for this user." }); 
-        }
-
-        var authClaims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.Id),
-            new Claim(ClaimTypes.Name, user.UserName!),
-            new Claim(ClaimTypes.Email, user.Email!),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        };
-
-        if (user.TutorId != null) { authClaims.Add(new Claim("TutorId", user.TutorId.ToString()!)); }
-
-        foreach (var userRole in userRoles)
-        {
-            authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-        }
-
-        var token = _tokenService.GenerateAccessToken(authClaims, _configuration);
-
-        var refreshToken = _tokenService.GenerateRefreshToken();
-
-        _ = int.TryParse(_configuration["JWT:RefreshTokenValidityInMinutes"], out int refreshTokenValidityInMinutes);
-
-        user.RefreshToken = refreshToken;
-        user.RefreshTokenExpiryTime = DateTime.Now.AddMinutes(refreshTokenValidityInMinutes);
-
-        await _userServices.UpdateAsync(user);
-
-        return Ok(new
-        {
-            Token = new JwtSecurityTokenHandler().WriteToken(token),
-            RefreshToken = refreshToken,
-            Expiration = token.ValidTo,
-        });
+        return Ok(authResponse);
     }
 
     [Authorize(Policy = "AdminOnly")]
@@ -94,28 +41,18 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
     {
-        var userExists = await _userServices.FindByNameAsync(registerDto.UserName!);
-        var emailExists = await _userServices.ExistsByEmailAsync(registerDto.Email!);
-        var tutorExists = await _unitOfWork.TutorRepository.GetAsync(t => t.TutorId == registerDto.TutorId!);
-        var tutorIdExists = await _userServices.ExistsByTutorIdAsync(registerDto.TutorId);
-
-        if (userExists != null || emailExists != false || tutorExists == null || tutorIdExists)
-        {
-            return StatusCode(
-                StatusCodes.Status500InternalServerError, new ResponseDto { Status = "Error", Message = "User, tutor or email is invalid" });
-        }
-
-        var user = _mapper.Map<ApplicationUser>(registerDto);
-        user.SecurityStamp = Guid.NewGuid().ToString();
-
-        var result = await _userServices.CreateUserAsync(user, registerDto.Password!);
+        var result = await _authServices.RegisterUserAsync(registerDto);
 
         if (!result.Succeeded)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDto { Status = "Error", Message = "User creation failed" });
+            return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDto
+            {
+                Status = "Error",
+                Message = result.Errors.FirstOrDefault()?.Description ?? "User creation failed"
+            });
         }
 
-        return Ok(new ResponseDto { Status = "Success", Message = "User created successfully" });
+        return Ok(new ResponseDto { Status = "Success", Message = "User created successfuly" });
     }
 
     [HttpPost]
