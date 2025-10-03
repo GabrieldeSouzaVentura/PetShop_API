@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PetShop.Application.Service.IService;
 using PetShop.DTOs.JwtDtos;
 using PetShop.Models;
@@ -74,6 +75,40 @@ public class AuthServices : IAuthServices
         {
             AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
             RefreshToken = refreshToken
+        };
+    }
+
+    public async Task<TokenDto?> RefreshTokenAsync(TokenDto tokenDto)
+    {
+        if (tokenDto is null) return null;
+
+        string? accessToken = tokenDto.AccessToken ?? throw new ArgumentNullException(nameof(tokenDto));
+        string? refreshToken = tokenDto.RefreshToken ?? throw new ArgumentNullException(nameof(tokenDto));
+
+        var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken!, _configuration);
+
+        if (principal == null) return null;
+
+        string username = principal.Identity!.Name!;
+
+        var user = await _identityServices.FindByNameAsync(username!);
+
+        if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+        {
+            return null;
+        }
+
+        var newAccessToken = _tokenService.GenerateAccessToken(principal.Claims.ToList(), _configuration);
+
+        var newRefreshToken = _tokenService.GenerateRefreshToken();
+
+        user.RefreshToken = newRefreshToken;
+        await _identityServices.UpdateAsync(user);
+
+        return new TokenDto
+        {
+            AccessToken = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
+            RefreshToken = newRefreshToken
         };
     }
 
