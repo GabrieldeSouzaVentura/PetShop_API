@@ -3,6 +3,7 @@ using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PetShop.Application.Service;
 using PetShop.Application.Service.IService;
 using PetShop.DTOs.JwtDtos;
 using PetShop.Models;
@@ -60,36 +61,19 @@ public class AuthController : ControllerBase
     [ServiceFilter(typeof(PetShopExceptionFilter))]
     public async Task<IActionResult> RefrshToken([FromBody]TokenDto tokenDto)
     {
-        if (tokenDto is null) return BadRequest("Invalid client request");
-
-        string? accessToken = tokenDto.AccessToken ?? throw new ArgumentNullException(nameof(tokenDto));
-        string? refreshToken = tokenDto.RefreshToken ?? throw new ArgumentNullException(nameof(tokenDto));
-
-        var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken!, _configuration);
-
-        if (principal == null) return BadRequest("Invalid access token/refresh token");
-
-        string username = principal.Identity!.Name!;
-
-        var user = await _userServices .FindByNameAsync(username!);
-
-        if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+        if (string.IsNullOrEmpty(tokenDto.AccessToken) || string.IsNullOrEmpty(tokenDto.RefreshToken))
         {
-            return BadRequest("Invalid access token/refres token");
+            return BadRequest("Access token or refresh token is missing.");
         }
 
-        var newAccessToken = _tokenService.GenerateAccessToken(principal.Claims.ToList(), _configuration);
+        var authResponse = await _authServices.RefreshTokenAsync(tokenDto);
 
-        var newRefreshToken = _tokenService.GenerateRefreshToken();
-
-        user.RefreshToken = newRefreshToken;
-        await _userServices.UpdateAsync(user);
-
-        return new ObjectResult(new
+        if (authResponse == null)
         {
-            accessToken = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
-            refreshToken = newRefreshToken
-        });
+            return BadRequest("Invalid access token/refresh token.");
+        }
+
+        return Ok(authResponse);
     }
 
     [Authorize(Policy = "AdminOnly")]
